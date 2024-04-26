@@ -19,10 +19,35 @@
     padding: 10px;
     border-radius: 5px;
 }
+.todo-item{
+    background-color: #e67300;
+    padding: 5px 20px;
+    border-radius: 30px;
+    color:white ;
+}
 
         </style>
 </head>
 <body>
-    <div></div>
-</body>
+    <div class="list-container" id="list-container">
+<div class="todo-item">task item</div>
+
+    </div>
+    <div class="action-container">
+        <input type="text" id="input-todo"/>
+        <button onclick="add()">
+            Add
+          </button>
+</div>
+
+<script>
+const todoList = []
+function add(){
+    const inputElement = document.getElementById('input-todo')
+    todoList.push(inputElement.value)
+}
+
+
+    </script>
+        </body>
 </html>
