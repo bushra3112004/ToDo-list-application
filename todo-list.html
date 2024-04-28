@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ToDo list application</title>
     <style>
+        .heading{
+            text-align: center;
+            color: tomato;
+            margin: 20px;
+            font-size: 50px;
+        }
 .action-container{
     display: flex;
     justify-content: center;
@@ -14,28 +20,41 @@
 .list-container{
     background-color: #ffd9b3;
     width: 300px;
+    height: 200px;
+    overflow-y: scroll;
     display: block;
     margin: 20px auto;
     padding: 10px;
     border-radius: 5px;
 }
 .todo-item{
-    background-color: #e67300;
+    background-color:tomato;
     padding: 5px 20px;
     border-radius: 30px;
     color:white ;
+    margin: 5px;
+}
+.btn{
+    width: 70px;
+    height: 30px;
+    background-color: tomato;
+    color: white;
+    border-radius:30px;
+    border:2px solid black;
+    margin-left: 20px;
 }
 
         </style>
 </head>
 <body>
+    <h1 class="heading">ToDo application</h1>
     <div class="list-container" id="list-container">
-<div class="todo-item">task item</div>
+<div class="todo-item"></div>
 
     </div>
     <div class="action-container">
-        <input type="text" id="input-todo"/>
-        <button onclick="add()">
+        <input type="text" placeholder="enter student name&ph.no" id="input-todo"/>
+        <button class="btn"  onclick="add()">
             Add
           </button>
 </div>
@@ -45,6 +64,20 @@ const todoList = []
 function add(){
     const inputElement = document.getElementById('input-todo')
     todoList.push(inputElement.value)
+    inputElement.value = ""
+  renderToDoList()
+}
+function renderToDoList(){
+    const listContainer = document.getElementById('list-container')
+    listContainer.innerHTML = ""
+    for(const todoItem of todoList)
+    {
+        listContainer.innerHTML += `<div class="todo-item">
+            <input type="checkbox"/>
+            ${todoItem}
+            </div>` 
+        
+    }
 }
 
 
