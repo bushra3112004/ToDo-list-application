@@ -60,10 +60,15 @@
 </div>
 
 <script>
-const todoList = []
+let todoList = []
+const listfromLocalStorage = localStorage.getItem("todoList");
+if(listfromLocalStorage){
+    todoList = JSON.parse(listfromLocalStorage);
+}
 function add(){
     const inputElement = document.getElementById('input-todo')
     todoList.push(inputElement.value)
+    localStorage.setItem("todoList",JSON.stringify(todoList))
     inputElement.value = ""
   renderToDoList()
 }
